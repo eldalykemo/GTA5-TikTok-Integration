@@ -114,7 +114,15 @@ public class GTAVWebhookScript : Script
                         Logger.Log("Cannot parse vehicle name: " + command.custom);
                     }
                     break;
-                }
+               }
+
+                    if (!int.TryParse(command.custom, out int num))
+                        num = 1;
+
+                    if (num > 50) num = 50;
+
+                    for (int i = 0; i < num; i++)
+                    {
             case "remove_spawned_vehicles":
                 {
                     try
